@@ -1,6 +1,6 @@
 # Algorytm 11
 
-Treść zadania
+## Treść zadania
 
 
 Loptr, używając swoich zdolności do podróżowania w czasie, postanawia przewidzieć własną lokalizację w różnych momentach historycznych i alternatywnych rzeczywistościach. Jego celem jest zrozumienie, w jakich okresach czasowych i wymiarach jest najbardziej prawdopodobne, że będzie mógł zostać odnaleziony lub zlokalizowany przez inne postacie, takie jak Siekiera, analityk Suibom czy agenci YBS.
