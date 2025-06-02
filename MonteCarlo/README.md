@@ -157,3 +157,6 @@ Następnie ustawiamy precyzję na dwa miejsca po przecinku i wypisujemy rozwiąz
     double wynik = (double)licznik / N;
     cout << fixed << setprecision(2) << wynik << endl;
 ```
+
+
+## Złożoność programu to O(N), gdzie N to liczba prób.
