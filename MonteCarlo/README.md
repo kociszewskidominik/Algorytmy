@@ -102,3 +102,19 @@ int main(){
     return 0;
 }
 ```
+
+
+Wczytanie danych na potrzeby zadania.
+
+
+Przedziały czasowe:
+- `godzina1`
+- `godzina2`
+
+
+Epoka do której chcemy się udać - `epoka`.
+```java
+    string godzina1, godzina2;
+    int epoka;
+    cin >> godzina1 >> godzina2 >> epoka;
+```
