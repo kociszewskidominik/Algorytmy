@@ -32,7 +32,7 @@ Program na wejście otrzymuje dwie godziny w formacie HH:mm, które mówią o pr
 Należy wypisać jakie jest prawdopodobieństwo pojawienia się Loptra, w wybranym wymiarze w danym przedziale czasowy. Wynik powinien być podany z dokładnością do dwóch miejsc po przecinku.
 
 
-PRZYKŁADOWE DANE WEJŚCIOWE
+##PRZYKŁADOWE DANE WEJŚCIOWE
 
 
 8:00
@@ -40,21 +40,22 @@ PRZYKŁADOWE DANE WEJŚCIOWE
 0
 
 
-PRZYKŁADOWA FUNKCJA:
+## PRZYKŁADOWA FUNKCJA:
+```cpp
 int Loptr(int HH, int mm){
 	if(HH >= 8 && HH < 15) return 0;
 	else if(HH >= 15 && HH < 22) return 1;
 	return 2;
 }
+```
 
-
-PRZYKŁADOWE DANE WYJŚCIOWE
+## PRZYKŁADOWE DANE WYJŚCIOWE
 
 
 0.50
 
 
-UWAGA
+### UWAGA
 
 
 Zadanie powinno być rozwiązane metodą Monte Carlo, która idealnie nadaje się do symulacji prawdopodobieństw w złożonych, niepewnych scenariuszach, takich jak wielowymiarowe podróże w czasie i przestrzeni, gdzie tradycyjne metody mogą nie być wystarczające.
