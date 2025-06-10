@@ -264,4 +264,6 @@ int main() {
 
 ## ZŁOŻONOŚĆ:
 W najgorszym przypadku, gdy będziemy musieli przejść przez wszystkie butelki - O(n), gdzie `n` to liczby butelek.
+
+
 W najlepszy, gdy pierwsza butelka spowoduje przepełnienie - O(1).
