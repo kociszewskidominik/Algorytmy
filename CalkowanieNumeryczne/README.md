@@ -151,4 +151,50 @@ int main() {
     return 0;
 }
 ```
+W funkcji `objetosc` liczymy za pomocą wzoru objętość akwarium, by wiedzieć ile maksymalnie wody się zmieści.
+```cpp
+int objetosc(int x, int y, int z) {
+    int V = x * y * z;
 
+    return V;
+}
+```
+Funkcja `wyplenienie` zwraca ile teraz faktycznie wody **jest** w akwarium.
+```cpp
+double wypelnienie(int V, double p) {
+    return p * V;
+}
+```
+
+```cpp
+double objetoscbutelki(double j) {
+    double dh = 0.01;
+    int N = (int)ceil(j/dh);
+    double V = 0.0;
+
+    for(int i = 0; i < N; i++) {
+        double h0 = i * dh;
+        double h1 = (i + 1) * dh;
+
+        if(h1 > j) {
+            h1 = j;
+        }
+
+        double r0 = butelka(h0);
+        if(r0 < 0) {
+            r0 = 0;
+        }
+
+        double r1 = butelka(h1);
+        if(r1 < 0) {
+            r1 = 0;
+        }
+
+        V += ((r0 * r0 + r1 * r1) / 2) * (h1 - h0);
+    }
+
+    V *= M_PI;
+
+    return V;
+}
+```
