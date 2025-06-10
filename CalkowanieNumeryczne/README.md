@@ -151,7 +151,7 @@ int main() {
     return 0;
 }
 ```
-W funkcji `objetosc` liczymy za pomocą wzoru objętość akwarium, by wiedzieć ile maksymalnie wody się zmieści.
+W funkcji `objetosc()` liczymy za pomocą wzoru objętość akwarium, by wiedzieć ile maksymalnie wody się zmieści.
 ```cpp
 int objetosc(int x, int y, int z) {
     int V = x * y * z;
@@ -159,13 +159,31 @@ int objetosc(int x, int y, int z) {
     return V;
 }
 ```
-Funkcja `wyplenienie` zwraca ile teraz faktycznie wody **jest** w akwarium.
+Funkcja `wyplenienie()` zwraca ile teraz faktycznie wody **jest** w akwarium.
 ```cpp
 double wypelnienie(int V, double p) {
     return p * V;
 }
 ```
+Funkcja `objetoscbutelki()` przyjmuje `j` - wysokość do której butelka jest wypełniona, `dh` to warstwa na którą dzielimy przedział od 0 do `j`.
 
+
+`N` to liczba kroków, zaokrąglamy do góry za pomocą `ceil()` żeby pokryć cały zakres.
+
+
+`V` - sumator objętości.
+
+
+W pętli przechodzimy po wszystkich warstwach, `h0` to dolna krawędź warstwy, a `h1` górna. Gdy górna warstwa wyjdzie poza `j` to skracamy ją do `j`.
+
+
+`r0` i `r1` to promienie przekroju obu warstw.
+
+
+Jeżeli kształt butelki kończy się wcześniej, traktujemy promień jako 0.
+
+
+`V` to wynik całkowania, na koniec mnożymy przez stałą pi - `M_PI`, aby otrzymać faktyczną objętość i zwracamy wynik
 ```cpp
 double objetoscbutelki(double j) {
     double dh = 0.01;
@@ -198,3 +216,52 @@ double objetoscbutelki(double j) {
     return V;
 }
 ```
+- `x`, `y`, `z` - wymiary akwarium.
+- `p` - stopień jego wypełnienia.
+- `n` - liczba butelek.
+
+`obj` - cała objętość akwarium, `woda` - w jakim stopniu jest wypełnione.
+
+
+Iterujemy po ilości butelek, za każdym razem wczytując `j`, czyli wysokość słupa napoju w butelce. Wywołujemy funkcje `objetoscbutelki()`, która za pomocą numerycznej całki wyznacz objętość cieczy do wysokości `j` i wynik zapisujemy w `Vb`.
+
+
+Do dotychczasowej ilości wody dodajemy objętość butelki. Gdy objętości mamy więcej niż dostępnej w akwarium wypisujemy natchmiast numer butelki i zwracamy 0.
+```cpp
+int main() {
+    std::ios_base::sync_with_stdio(false);
+    std::cout.tie(nullptr);
+    std::cin.tie(nullptr);
+
+    int x, y, z, n;
+    double p;
+
+    cin >> x >> y >> z;
+    cin >> p;
+    cin >> n;
+
+    double obj = objetosc(x, y, z);
+    double woda = wypelnienie(obj, p);
+
+    for(int i = 0; i < n; i++) {
+        double j;
+        cin >> j;
+
+        double Vb = objetoscbutelki(j);
+        woda += Vb;
+
+        if(woda > obj) {
+            cout << (i + 1) << '\n';
+            return 0;
+        }
+    }
+
+    cout << "NIE";
+    return 0;
+}
+```
+
+
+## ZŁOŻONOŚĆ:
+W najgorszym przypadku, gdy będziemy musieli przejść przez wszystkie butelki - O(n), gdzie `n` to liczby butelek.
+W najlepszy, gdy pierwsza butelka spowoduje przepełnienie - O(1).
